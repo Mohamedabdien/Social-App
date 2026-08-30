@@ -1,0 +1,494 @@
+:root {
+  --ink: #151b2e;
+  --paper: #eceff6;
+  --paper-raised: #ffffff;
+  --line: #d6dbe8;
+  --route: #5b5fef;
+  --route-dim: #e3e3fb;
+  --signal: #138725;
+  --signal-dim: #ffe3de;
+  --ok: #1f9d63;
+  --muted: #6b7286;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--route);
+  outline-offset: 2px;
+}
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: var(--ink);
+  color: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.navbar .brand .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 4px rgba(136, 220, 100, 0.714);
+}
+
+.navbar nav {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.navbar nav a,
+.navbar nav button {
+  background: transparent;
+  border: none;
+  color: var(--paper);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar nav a.active {
+  background: var(--route);
+  color: #fff;
+}
+
+/* ---------- Layout ---------- */
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 18px 60px;
+}
+
+.page.wide {
+  max-width: 780px;
+}
+
+.page-title {
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Cards / forms ---------- */
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.auth-card {
+  max-width: 420px;
+  margin: 40px auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.form-field input,
+.form-field textarea {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--route);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  background: var(--route);
+  color: #fff;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.btn:hover {
+  opacity: 0.92;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn.danger {
+  background: var(--signal);
+}
+
+.btn.full {
+  width: 100%;
+}
+
+.btn.small {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+}
+
+.error-box {
+  background: var(--signal-dim);
+  color: #9c2e1f;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  margin-bottom: 14px;
+}
+
+.success-box {
+  background: #e1f6ea;
+  color: var(--ok);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.86rem;
+  margin-bottom: 14px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.auth-switch a {
+  color: var(--route);
+  font-weight: 700;
+}
+
+/* ---------- The "route line" feed — signature element ---------- */
+.route-feed {
+  position: relative;
+  padding-inline-start: 26px;
+}
+
+.route-feed::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background-image: linear-gradient(var(--route) 60%, transparent 0%);
+  background-size: 2px 10px;
+  background-repeat: repeat-y;
+}
+
+.route-stop {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.route-stop::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -26px;
+  top: 18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  border: 2px solid var(--route);
+}
+
+/* ---------- Post card ---------- */
+.post-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.post-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--route-dim);
+  color: var(--route);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-author {
+  font-weight: 700;
+  font-size: 0.94rem;
+}
+
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.post-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.icon-btn:hover {
+  background: var(--paper);
+}
+
+.icon-btn.liked {
+  color: var(--signal);
+}
+
+.post-actions .spacer {
+  flex: 1;
+}
+
+/* ---------- Comments ---------- */
+.comment-item {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-bubble {
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 8px 12px;
+  flex: 1;
+}
+
+.comment-author {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.comment-text {
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.comment-row-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.comment-row-actions button {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0;
+}
+
+.comment-row-actions button:hover {
+  color: var(--route);
+}
+
+/* ---------- Profile ---------- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.profile-header .avatar {
+  width: 76px;
+  height: 76px;
+  font-size: 1.6rem;
+}
+
+.profile-name {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.center-state {
+  text-align: center;
+  padding: 50px 16px;
+  color: var(--muted);
+}
+
+.loader-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--route);
+  animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.25; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@media (max-width: 520px) {
+  .navbar nav a span,
+  .navbar nav button span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-dot {
+    animation: none;
+  }
+}
